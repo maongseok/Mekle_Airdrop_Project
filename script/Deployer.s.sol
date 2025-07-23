@@ -13,7 +13,7 @@ contract Deployer is Script {
     function deployMerkleAirdrop() public returns (MerkleAirdrop, BagelToken) {
         vm.startBroadcast();
         BagelToken token = new BagelToken();
-        MerkleAirdrop airdrop = new MerkleAirdrop(s_merkleRoot, token);
+        MerkleAirdrop airdrop = new MerkleAirdrop(s_merkleRoot, address(token));
         token.mint(address(airdrop), s_amountToTransfer);
         vm.stopBroadcast();
         return (airdrop, token);
